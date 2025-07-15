@@ -2,7 +2,6 @@
 
 ## (root)/
 - `README.md`: Documento README con una introducción o guía del proyecto.
-- `avance proyecto.sql`: Este archivo contiene el script SQL central del proyecto, donde se definen múltiples paquetes (schemas) que encapsulan procedimientos almacenados y funciones específicas para distintos módulos del sistema. Funciona como la columna vertebral lógica de la base de datos, organizando las operaciones CRUD y algunas funciones auxiliares por dominio de negocio.
 
 ## .git/
 - Necesarios para git, no se incluyen por ser de plataforma.
