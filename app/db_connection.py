@@ -3,7 +3,7 @@ import psycopg2
 hostname = 'localhost'
 database = 'lacevichoza_db'
 username = 'postgres'
-pwd = 'Hummer$$17172323'
+pwd = '' #Aquí colocar la contraseña que tengan en su pgAdmin
 port_id = '5432'
 
 try:
