@@ -32,6 +32,8 @@ Todo el código se gestiona de forma colaborativa en GitHub y se documenta cuida
 📁 docs/
  ├── Diccionario_de_Datos__Completo.csv
  └── estructura_repo.md
+📁 app/
+ └── db_connection.py
 📄 avance proyecto.sql
 📄 README.md
 ```
