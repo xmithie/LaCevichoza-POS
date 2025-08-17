@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Categorías — La Cevichoza{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h4 mb-0">Categorías</h2>
+  <a class="btn btn-primary" href="{{ url_for('categorias_crear') }}">Nueva categoría</a>
+</div>
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID</th><th>Nombre</th><th>Descripción</th><th></th>
+      </tr></thead>
+      <tbody>
+        {% for c in categorias %}
+        <tr>
+          <td>{{ c.id_categoria }}</td>
+          <td>{{ c.nombre }}</td>
+          <td>{{ c.descripcion }}</td>
+          <td class="text-nowrap">
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('categorias_editar', id_categoria=c.id_categoria) }}">Editar</a>
+            <form class="d-inline" method="post" action="{{ url_for('categorias_eliminar', id_categoria=c.id_categoria) }}" onsubmit="return confirm('¿Eliminar categoría?')">
+              <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

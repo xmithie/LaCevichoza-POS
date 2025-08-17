@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Ventas por día — La Cevichoza{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">Ventas por día</h2>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>Día</th><th>Total ventas</th><th>Monto total</th>
+      </tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.dia }}</td>
+          <td>{{ r.total_ventas }}</td>
+          <td>{{ r.monto_total }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

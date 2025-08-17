@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Stock bajo — La Cevichoza{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">Productos con stock bajo</h2>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID</th><th>Producto</th><th>Stock</th><th>Mínimo</th>
+      </tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.id_producto }}</td>
+          <td>{{ r.nombre }}</td>
+          <td>{{ r.stock }}</td>
+          <td>{{ r.stock_minimo }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center text-muted">Sin alertas</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

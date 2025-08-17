@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Usuarios — La Cevichoza{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h4 mb-0">Usuarios</h2>
+  <a class="btn btn-primary" href="{{ url_for('usuarios_crear') }}">Nuevo usuario</a>
+</div>
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID</th><th>Nombre</th><th>Usuario</th><th>ID Rol</th><th></th>
+      </tr></thead>
+      <tbody>
+        {% for u in usuarios %}
+        <tr>
+          <td>{{ u.id_usuario }}</td>
+          <td>{{ u.nombre }}</td>
+          <td>{{ u.usuario }}</td>
+          <td>{{ u.id_rol }}</td>
+          <td class="text-nowrap">
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('usuarios_editar', id_usuario=u.id_usuario) }}">Editar</a>
+            <form class="d-inline" method="post" action="{{ url_for('usuarios_eliminar', id_usuario=u.id_usuario) }}" onsubmit="return confirm('¿Eliminar usuario?')">
+              <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

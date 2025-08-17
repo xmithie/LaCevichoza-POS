@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Reportes — La Cevichoza{% endblock %}
+{% block content %}
+<div class="p-4 bg-white rounded shadow-sm">
+  <h2 class="h4 mb-3">Reportes</h2>
+  <ul class="mb-0">
+    <li><a href="{{ url_for('reporte_stock_bajo') }}">Productos con stock bajo</a></li>
+    <li><a href="{{ url_for('reporte_ventas_detalladas') }}">Ventas detalladas</a></li>
+    <li><a href="{{ url_for('reporte_productos_mas_vendidos') }}">Productos más vendidos</a></li>
+    <li><a href="{{ url_for('reporte_ventas_por_dia') }}">Ventas por día</a></li>
+    <li><a href="{{ url_for('reporte_ventas_por_usuario') }}">Ventas por usuario</a></li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Productos — La Cevichoza{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h4 mb-0">Productos</h2>
+  <a class="btn btn-primary" href="{{ url_for('productos_crear') }}">Nuevo producto</a>
+</div>
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead>
+        <tr>
+          <th>ID</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Categoría</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in productos %}
+        <tr>
+          <td>{{ p.id_producto }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.precio }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.estado }}</td>
+          <td>{{ p.id_categoria }}</td>
+          <td class="text-nowrap">
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('productos_editar', id_producto=p.id_producto) }}">Editar</a>
+            <form class="d-inline" method="post" action="{{ url_for('productos_eliminar', id_producto=p.id_producto) }}" onsubmit="return confirm('¿Eliminar producto?')">
+              <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

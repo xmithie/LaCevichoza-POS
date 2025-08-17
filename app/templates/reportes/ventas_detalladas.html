@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Ventas detalladas — La Cevichoza{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">Ventas detalladas</h2>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID Venta</th><th>Fecha</th><th>Cliente</th><th>Vendedor</th>
+        <th>ID Producto</th><th>Producto</th><th>Cantidad</th><th>Precio U.</th><th>Subtotal</th>
+      </tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.id_venta }}</td>
+          <td>{{ r.fecha }}</td>
+          <td>{{ r.cliente }}</td>
+          <td>{{ r.vendedor }}</td>
+          <td>{{ r.id_producto }}</td>
+          <td>{{ r.producto }}</td>
+          <td>{{ r.cantidad }}</td>
+          <td>{{ r.precio_unitario }}</td>
+          <td>{{ r.subtotal }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="9" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

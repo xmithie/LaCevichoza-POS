@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Ventas por usuario — La Cevichoza{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">Ventas por usuario</h2>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID Usuario</th><th>Vendedor</th><th>Total ventas</th><th>Monto total</th>
+      </tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.id_usuario }}</td>
+          <td>{{ r.vendedor }}</td>
+          <td>{{ r.total_ventas }}</td>
+          <td>{{ r.monto_total }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

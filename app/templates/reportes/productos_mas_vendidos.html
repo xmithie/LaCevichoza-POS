@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Productos más vendidos — La Cevichoza{% endblock %}
+{% block content %}
+<h2 class="h4 mb-3">Productos más vendidos</h2>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr>
+        <th>ID</th><th>Producto</th><th>Total vendidos</th>
+      </tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.id_producto }}</td>
+          <td>{{ r.nombre }}</td>
+          <td>{{ r.total_vendidos }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3" class="text-center text-muted">Sin datos</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
