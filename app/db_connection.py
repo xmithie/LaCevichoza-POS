@@ -4,9 +4,9 @@ from psycopg2.extras import RealDictCursor
 
 
 hostname = 'localhost'
-database = 'lacevichoza_db'
+database = 'lacevichoza'
 username = 'postgres'
-pwd = 'Hummer$$17172323' #Recuerden cambiar la contraseña a su contraseña de PgAdmin4 para conectarse
+pwd = 'postgres' #Recuerden cambiar la contraseña a su contraseña de PgAdmin4 para conectarse
 port_id = '5432'
 
 DB_CONFIG = {

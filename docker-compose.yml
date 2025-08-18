@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:17
+    container_name: lacevichoza_pg
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lacevichoza
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Montamos los archivos de inicialización (se ejecutan solo si el datadir está vacío)
+      - ./sql:/init/sql:ro
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lacevichoza"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # Opcional: Adminer para inspeccionar la DB en el navegador
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
