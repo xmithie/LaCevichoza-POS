@@ -127,6 +127,116 @@ Este entregable corresponde al **Segundo Avance del Proyecto Final**, cumpliendo
 - ✔️ Diccionario de datos completo
 - ✔️ Buenas prácticas de modularización y uso de `SCHEMA`
 
+# LaCevichoza POS
+
+Sistema de punto de venta para *La Cevichoza*, construido con **Python**, **PostgreSQL** y **Docker**.
+
+---
+
+## 🚀 Requisitos previos
+
+Antes de comenzar, asegúrate de tener instalados:
+
+- [Git](https://git-scm.com/downloads)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Python 3.11+](https://www.python.org/downloads/)
+
+---
+
+## 📥 Clonar el repositorio
+
+```bash
+git clone https://github.com/usuario/LaCevichoza-POS.git
+cd LaCevichoza-POS
+```
+
+---
+
+## 🐘 Levantar la base de datos con Docker
+
+1. Inicia los contenedores:
+
+   ```bash
+   docker compose up -d
+   ```
+
+   Esto levantará:
+   - PostgreSQL en `localhost:5432`
+   - Adminer en `localhost:8080` (opcional, cliente web para la BD)
+
+2. Restaura la base de datos (ya incluimos los scripts en `docker-entrypoint-initdb.d/`, por lo que se cargan automáticamente al iniciar el contenedor).
+
+3. Verifica que las tablas existen:
+
+   ```bash
+   docker exec -it lacevichoza_pg psql -U postgres -d lacevichoza -c "\dt"
+   ```
+
+---
+
+## 🐍 Configuración de entorno Python
+
+1. Crea y activa un entorno virtual:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate    # Linux/Mac
+   venv\Scripts\activate       # Windows
+   ```
+
+2. Instala dependencias:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 🔗 Variables de conexión
+
+La aplicación se conecta a PostgreSQL usando estos parámetros (ya configurados en `app/db_connection.py`):
+
+```ini
+host=localhost
+port=5432
+dbname=lacevichoza
+user=postgres
+password=postgres
+```
+
+> ⚠️ Si cambiaste usuario o contraseña en tu Docker, actualiza estos valores.
+
+---
+
+## ▶️ Ejecutar la aplicación
+
+Una vez que la BD esté arriba y las dependencias instaladas:
+
+```bash
+python app/app.py
+```
+
+Accede en tu navegador a:
+
+```
+http://localhost:5000
+```
+
+---
+
+## 🛠 Herramientas adicionales
+
+- **Adminer**: [http://localhost:8080](http://localhost:8080)  
+  Usuario: `postgres`  
+  Password: `postgres`  
+  Base de datos: `lacevichoza`
+
+---
+
+✅ Con esto deberías tener el sistema funcionando en tu máquina local.
+
+
+
 ---
 
 ## 📎 Licencia
